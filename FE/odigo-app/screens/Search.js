@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 
-function Screen2({ navigation }) {
+function Search({ navigation }) {
     return (
     <View>
         <Text>This is Screen 2</Text>
@@ -10,4 +10,4 @@ function Screen2({ navigation }) {
     );
 }
 
-export default Screen2;
+export default Search;
