@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import SearchIcon from '../../assets/img/icon_search.svg';
+import SearchIcon from '../../assets/img/icon_search.png';
 
 function SeachBar() {
   return (
@@ -21,10 +21,13 @@ const SearchBox = styled.View`
 `;
 
 const SearchInput = styled.TextInput`
-  padding: 14.5px 24px 14.5px 24px;
+  width: 100%;
+  padding: 14.5px 24px 14.5px 8px;
   color: rgb(130, 130, 130);
 `;
 
-const SearchImg = styled.Image``;
+const SearchImg = styled.Image`
+  margin: 14.5px 0px 14.5px 24px;
+`;
 
 export default SeachBar;

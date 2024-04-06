@@ -3,6 +3,7 @@ import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Main from './screens/Main.js';
 import Search from './screens/Search.js';
+import TrainSelect from './screens/TrainSelect.js';
 
 const Stack = createStackNavigator();
 
@@ -28,7 +29,21 @@ export default function App() {
               backgroundColor: 'black',
             },
             headerShadowVisible: false,
+            headerBackTitleVisible: false,
           }}
+        />
+        <Stack.Screen
+          name="TrainSelect"
+          component={TrainSelect}
+          options={({ navigation }) => ({
+            title: '목적역',
+            headerStyle: {
+              backgroundColor: 'black',
+            },
+            headerShadowVisible: false,
+            headerBackTitleVisible: false,
+            headerLeft: null,
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>

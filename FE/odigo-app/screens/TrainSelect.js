@@ -1,15 +1,13 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import SeachBar from '../components/SearchScreen/SearchBar';
-import Favorite from '../components/SearchScreen/Favorite';
-import Train from '../components/SearchScreen/Train';
+import Line from '../components/SearchScreen/Line';
 
-function Search({ navigation }) {
+function TrainSelect({ route, navigation }) {
   return (
     <StyledView>
       <SeachBar />
-      <Favorite />
-      <Train navigation={navigation} />
+      <Line name={route.params.name} line={route.params.line} navigation={navigation} />
     </StyledView>
   );
 }
@@ -18,4 +16,4 @@ const StyledView = styled.View`
   height: 100%;
 `;
 
-export default Search;
+export default TrainSelect;

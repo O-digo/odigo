@@ -43,6 +43,7 @@ const FavoriteListBox = styled.View`
   flex-direction: row;
   height: 40px;
   overflow-x: scroll;
+  padding-left: 24px;
 `;
 
 const ListScroll = styled.ScrollView``;
