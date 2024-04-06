@@ -1,13 +1,25 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import styled from 'styled-components/native';
+import SeachBar from '../components/SearchScreen/SearchBar';
+import Favorite from '../components/SearchScreen/Favorite';
+import Train from '../components/SearchScreen/Train';
 
-function Search({ navigation }) {
-    return (
-    <View>
-        <Text>This is Screen 2</Text>
-        <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
-    );
+function Screen2({ navigation }) {
+  return (
+    <StyledView>
+      <SeachBar />
+      <Favorite />
+      <Train />
+    </StyledView>
+  );
 }
 
-export default Search;
+const StyledView = styled.View`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: black;
+`;
+
+export default Screen2;
