@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import SeachBar from '../components/SearchScreen/SearchBar';
+import SearchBar from '../components/SearchScreen/SearchBar';
 import Favorite from '../components/SearchScreen/Favorite';
 import Train from '../components/SearchScreen/Train';
 
 function Screen2({ navigation }) {
   return (
     <StyledView>
-      <SeachBar />
+      <SearchBar />
       <Favorite />
       <Train />
     </StyledView>
