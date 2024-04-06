@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Screen1 from './screens/Screen1.js';
-import Screen2 from './screens/Screen2.js';
+import Main from './screens/Main.js';
+import Search from './screens/Search.js';
 
 const Stack = createStackNavigator();
 
@@ -10,8 +10,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Screen1" component={Screen1} />
-        <Stack.Screen name="Screen2" component={Screen2} />
+        <Stack.Screen name="Main" component={Main} />
+        <Stack.Screen name="Search" component={Search} />
       </Stack.Navigator>
     </NavigationContainer>
   );
