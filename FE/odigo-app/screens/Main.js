@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Alert } from 'react-native';
 import styled from 'styled-components/native';
 import Header from '../components/Header/Header.js';
@@ -11,27 +11,39 @@ import FavoriteList from '../components/SearchScreen/FavoriteList';
 
 function Main({ navigation }) {
     const favoriteItems = [
-        // { id: 1, name: '강남역' },
-        // { id: 2, name: '잠실역' },
-        // { id: 3, name: '영등포역' },
-        // { id: 4, name: '구로역' },
-        // { id: 5, name: '구로역' },
+        { id: 1, name: '강남역' },
+        { id: 2, name: '잠실역' },
+        { id: 3, name: '영등포역' },
+        { id: 4, name: '구로역' },
+        { id: 5, name: '구로역' },
     ];
+    const [favorite, setFavorite] = useState([]);
+    const [ControlMode, setControlMode] = useState('disable'); // 'start', 'quit'
     
     const onAlert = () => {
         Alert.alert("준비중입니다.");
+        if (ControlMode === 'disable') setControlMode('start');
+        else if (ControlMode === 'start') setControlMode('quit');
+        else setControlMode('disable');
     }
-    const goSearch = () => {
-        navigation.navigate('Search')
+    const goSearchCurrent = () => {
+        navigation.navigate('Search');
+    }
+    const goSearchArrival = () => {
+        navigation.navigate('Search');
+        setTimeout(() => {
+            setControlMode('start');
+        }, 500);
     }
     const goSetting = () => {
-        navigation.navigate('Setting')
+        navigation.navigate('Setting');
     }
     const goFavoriteEdit = () => {
-        navigation.navigate('FavoriteEdit')
+        navigation.navigate('FavoriteEdit');
     }
     const goFavoriteAdd = () => {
-        navigation.navigate('FavoriteAdd')
+        // navigation.navigate('FavoriteAdd');
+        setFavorite(favoriteItems);
     }
 
     return (
@@ -39,17 +51,19 @@ function Main({ navigation }) {
         <StationWrap>
             <Header onPress={goSetting}/>
             <StationTitle>이번 역</StationTitle>
-            <CurrentStation onPress={goSearch} />
+            <CurrentStation onPress={goSearchCurrent} />
             <StationTitle>도착 역</StationTitle>
-            <ArrivalStation onPress={goSearch} />
+            <ArrivalStation onPress={goSearchArrival} />
             <FavoriteStation onPress={goFavoriteEdit} />
             {
-                favoriteItems.length 
+                // favoriteItems.length 
+                favorite.length
                     ? <FavoriteList />
+                    // :<AddFavorite onPress={goFavoriteAdd} />
                     :<AddFavorite onPress={goFavoriteAdd} />
             }
         </StationWrap>
-        <ControlButton onPress={onAlert} />
+        <ControlButton onPress={onAlert} mode={ControlMode} />
     </Container>
     );
 }
