@@ -41,6 +41,6 @@ tasks.withType<Test> {
 }
 
 tasks.bootJar {
-    enabled = false
+    enabled = true
     layered
 }
