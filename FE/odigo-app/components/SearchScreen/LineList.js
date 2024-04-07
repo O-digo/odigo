@@ -12,7 +12,6 @@ function LineList({ line }) {
     { id: 6, name: '광명' },
     { id: 7, name: '광명' },
   ];
-
   return (
     <LineScrollView vertical={true} showsVerticalScrollIndicator={false}>
       <LineListBox>

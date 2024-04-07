@@ -14,7 +14,7 @@ export default function Setting({ navigation }) {
         <StyledText>알림</StyledText>
         <ArrowImg source={imgArrow} />
       </StyledButton>
-      <StyledButton onPress={onPressReady}>
+      <StyledButton onPress={() => navigation.navigate('FavoriteEdit')}>
         <StyledText>자주 가는 역 관리</StyledText>
         <ArrowImg source={imgArrow} />
       </StyledButton>
