@@ -66,7 +66,6 @@ export function lineNumber (line) {
       }
       case 'line03': {
         lineImag = line03;
-        break;
       }
       case 'line04': {
         lineImag = line04;
@@ -78,7 +77,6 @@ export function lineNumber (line) {
       }
       case 'line06': {
         lineImag = line06;
-        break;
       }
       case 'line07': {
         lineImag = line07;
@@ -86,7 +84,6 @@ export function lineNumber (line) {
       }
       case 'line08': {
         lineImag = line08;
-        break;
       }
       case 'line09': {
         lineImag = line09;
@@ -98,11 +95,9 @@ export function lineNumber (line) {
       }
       case 'lineGtxa': {
         lineImag = lineGtxa;
-        break;
       }
       case 'lineIc1': {
         lineImag = lineIc1;
-        break;
       }
       case 'lineIc2': {
         lineImag = lineIc2;
@@ -110,7 +105,6 @@ export function lineNumber (line) {
       }
       case 'lineKc': {
         lineImag = lineKc;
-        break;
       }
       case 'lineKg': {
         lineImag = lineKg;
@@ -122,15 +116,13 @@ export function lineNumber (line) {
       }
       case 'lineKk': {
         lineImag = lineKk;
-        break;
       }
-      case 'lineSb': {
+      case 'lineISb': {
         lineImag = lineSb;
         break;
       }
       case 'lineSbd': {
         lineImag = lineSbd;
-        break;
       }
       case 'lineSh': {
         lineImag = lineSh;
@@ -142,7 +134,6 @@ export function lineNumber (line) {
       }
       case 'lineUk': {
         lineImag = lineUk;
-        break;
       }
       case 'lineUs': {
         lineImag = lineUs;
@@ -150,7 +141,6 @@ export function lineNumber (line) {
       }
       case 'lineYi': {
         lineImag = lineYi;
-        break;
       }
     }
     return lineImag;

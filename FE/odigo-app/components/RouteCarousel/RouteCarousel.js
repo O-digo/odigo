@@ -1,117 +1,86 @@
 import React, { useState } from 'react';
-import { Dimensions, StyleSheet } from 'react-native'
+import { View, Text } from 'react-native';
 import styled from 'styled-components/native';
 import { lineNumber } from '../Station/ArrivalStation.js';
 
 
 export default function RouteCarousel() {
-    const [currentPage, setCurrentPage] = useState(0);
-    let screenWidth = Dimensions.get('window').width;
-    const carouselBlocks = [
-        [
-            {station: '신도림', line: 'line02', move: 0},
-            {station: '영등포', line: 'line01', move: 1},
-            {station: '노량진', line: 'line09', move: 3},
-            {station: '신논현', line: 'lineSb', move: 3}],
-        [
-            {station: '양재', line: 'line03', move: 2},
-            {station: '가락시장', line: 'line08', move: 8},
-            {station: '잠실', line: 'line02', move: 5},
-            {station: '건대입구', line: 'line07', move: 4}],
-        [
-            {station: '군자', line: 'line05', move: 2},
-            {station: '잠실', line: 'line02', move: 5},
-            {station: '건대입구', line: 'line07', move: 4}],
-        [
-            {station: '양재', line: 'line03', move: 2},
-            {station: '가락시장', line: 'line08', move: 8}],
-        [
-            {station: '양재', line: 'line03', move: 2},
-            {station: '가락시장', line: 'line08', move: 8},
-            {station: '잠실', line: 'line02', move: 5},
-            {station: '건대입구', line: 'line07', move: 4}],
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const routeStations = [
+        {station: '신도림', line: 'line02', move: 0},
+        {station: '영등포', line: 'line01', move: 1},
+        {station: '노량진', line: 'line09', move: 3},
+        {station: '신논현', line: 'lineSbd', move: 3},
+        {station: '양재', line: 'line03', move: 2},
+        {station: '가락시장', line: 'line08', move: 8},
+        {station: '잠실', line: 'line02', move: 5},
+        {station: '건대입구', line: 'line07', move: 4},
+        {station: '군자', line: 'line05', move: 2},
     ];
-
-    const handleScroll = (event) => {
-        const offsetX = event.nativeEvent.contentOffset.x;
-        const page = Math.ceil(offsetX / (screenWidth));
-        setCurrentPage(page);
+    const blockCnt = Math.floor(routeStations.length / 4);
+    const carouselBlocks = [];
+    for (let i=0; i<blockCnt; i++) {
+        carouselBlocks[i] = routeStations.slice(i, i+4);
     }
 
     return (
         <Container>
-            <Carousel 
-                horizontal
-                // pagingEnabled
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={styles.ScrollView}
-                onScroll={handleScroll}
-            >
-                {carouselBlocks.map((block, blockIndex) =>
-                    <Block key={`block-${blockIndex}`}>
-                        {block.map((route, routeIndex) =>
-                            <StationList key={`station-${routeIndex}`}>
-                                <StationWrap>
-                                    <StationImage source={lineNumber(route.line)}></StationImage>
-                                    <StationText>{route.station}</StationText>
-                                </StationWrap>
-                                <MoveText>{route.move}개 역</MoveText>
-                            </StationList>
-                        )}
-                    </Block>
-                )}
-            </Carousel>
+            {carouselBlocks.map((block, blockIndex) =>
+                <Block key={`block-${blockIndex}`}>
+                    {block.map((route, routeIndex) =>
+                        <StationList key={`station-${routeIndex}`}>
+                            <StationWrap>
+                                <StationImage source={lineNumber(route.line)}></StationImage>
+                                <StationText>{route.station}</StationText>
+                            </StationWrap>
+                            <MoveText>{route.move}개 역</MoveText>
+                        </StationList>
+                    )}
+                </Block>
+            )}
             <CarouselIndicator>
-                    {carouselBlocks.length > 1 &&
-                        carouselBlocks.map((_, indicatorIndex) => <Dot 
-                            key={`indicator-${indicatorIndex}`}
-                            active={`${ currentPage === indicatorIndex ? 'active' : '' }`}
-                        />)
-                    }
+                {carouselBlocks.length > 1 &&
+                    carouselBlocks.map((_, indicatorIndex) => <Dot 
+                        key={`indicator-${indicatorIndex}`}
+                        active={`${ currentIndex === indicatorIndex ? 'active' : '' }`}
+                    />)
+                }
             </CarouselIndicator>
         </Container>
     )
 }
 
-const styles = StyleSheet.create({
-    screenView: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingHorizontal: 16,
-    },
-})
-
-const Container = styled.View``;
-
-const Carousel = styled.ScrollView`
+const Container = styled.View`
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
 `;
 
 const Block = styled.View`
-    width: 340px;
-    min-height: 200px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding: 16px 20px;
+    /* align-items: center; */
+    justify-content: center;
+    width: 321px;
+    padding: 24px 20px;
     border: 2px solid #2C2C35;
     border-radius: 24px 20px;
-    margin-left: 8px;
 `;
 
 const StationList = styled.View`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    background-color: darkgray;
 `;
 
 const StationWrap = styled.View`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: start;
+    justify-content: right;
 `;
 
 const StationImage = styled.Image`
@@ -126,7 +95,8 @@ const MoveText = styled.Text`
 
 const StationText = styled.Text`
     color: white;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
     padding-left: 8px;
 `;
 
