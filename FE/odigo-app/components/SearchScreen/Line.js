@@ -5,7 +5,7 @@ import CloseImg from '../../assets/img/icon_close_Large_2x.png';
 
 function Line({ name, line, navigation }) {
   const onPressButton = () => {
-    navigation.goBack();
+    navigation.navigate('Search');
   };
   return (
     <LineBox>
