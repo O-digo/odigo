@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { iconPath } from '../../iconPath';
-import imgFavorite from '../../assets/img/icon_blank_favorite.png';
+import imgBlankFavorite from '../../assets/img/icon_blank_favorite.png';
+import imgFavorite from '../../assets/img/icon_favorite.png';
 
 function LineItem({ name, line }) {
+  const [fav, setFav] = useState(false);
+  const onPress = () => {
+    setFav(!fav);
+  };
   return (
     <LineItemBox>
       <LeftBox>
@@ -13,7 +18,9 @@ function LineItem({ name, line }) {
           <ButtonText>{name}</ButtonText>
         </LineButton>
       </LeftBox>
-      <FavoriteImg source={imgFavorite} />
+      <FavoriteButton onPress={onPress}>
+        <FavoriteImg source={fav ? imgFavorite : imgBlankFavorite} />
+      </FavoriteButton>
     </LineItemBox>
   );
 }
@@ -29,6 +36,8 @@ const LineItemBox = styled.View`
   justify-content: space-between;
   align-items: center;
 `;
+
+const FavoriteButton = styled.TouchableOpacity``;
 
 const FavoriteImg = styled.Image`
   width: 32px;

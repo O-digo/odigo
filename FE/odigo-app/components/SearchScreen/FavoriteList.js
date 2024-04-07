@@ -2,30 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import FavoriteItem from './FavoriteItem';
 
-function FavoriteList() {
-  const favoriteItems = [
-    {
-      id: 1,
-      name: '강남역',
-    },
-    {
-      id: 2,
-      name: '잠실역',
-    },
-    {
-      id: 3,
-      name: '영등포역',
-    },
-    {
-      id: 4,
-      name: '구로역',
-    },
-    {
-      id: 5,
-      name: '구로역',
-    },
-  ];
-
+function FavoriteList({ favoriteItems }) {
   return (
     <FavoriteListBox>
       <ListScroll horizontal={true} showsHorizontalScrollIndicator={false}>

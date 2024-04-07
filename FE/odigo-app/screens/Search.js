@@ -8,7 +8,7 @@ function Search({ navigation }) {
   return (
     <StyledView>
       <SeachBar />
-      <Favorite />
+      <Favorite navigation={navigation} />
       <Train navigation={navigation} />
     </StyledView>
   );

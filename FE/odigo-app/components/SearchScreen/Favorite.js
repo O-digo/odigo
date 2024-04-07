@@ -1,10 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/native';
 import FavoriteList from './FavoriteList';
 import imgFavorite from '../../assets/img/icon_favorite.png';
 import imgArrow from '../../assets/img/icon_arrow.png';
+import AddFavorite from '../Station/AddFavorite';
 
-function Favorite() {
+function Favorite({ navigation }) {
+  const [fav, setFav] = useState([]);
+
+  const onPressButton = () => {
+    navigation.navigate('FavoriteEdit');
+  };
+
+  const onPressFavoritePlus = () => {
+    setFav(favoriteItems);
+  };
+
+  const favoriteItems = [
+    {
+      id: 1,
+      name: '강남역',
+    },
+    {
+      id: 2,
+      name: '잠실역',
+    },
+    {
+      id: 3,
+      name: '영등포역',
+    },
+    {
+      id: 4,
+      name: '구로역',
+    },
+    {
+      id: 5,
+      name: '구로역',
+    },
+  ];
+
   return (
     <FavoriteBox>
       <FavoriteTitleBox>
@@ -12,9 +46,15 @@ function Favorite() {
           <FavoriteImg source={imgFavorite} />
           <FavoriteTitle>자주가는 역</FavoriteTitle>
         </LeftBox>
-        <ArrowImg source={imgArrow} />
+        <ArrowButton onPress={onPressButton}>
+          <ArrowImg source={imgArrow} />
+        </ArrowButton>
       </FavoriteTitleBox>
-      <FavoriteList />
+      {fav.length ? (
+        <FavoriteList favoriteItems={fav} />
+      ) : (
+        <AddFavorite onPress={onPressFavoritePlus} />
+      )}
     </FavoriteBox>
   );
 }
@@ -22,6 +62,8 @@ function Favorite() {
 const FavoriteBox = styled.View`
   width: 100%;
 `;
+
+const ArrowButton = styled.TouchableOpacity``;
 
 const LeftBox = styled.View`
   display: flex;
