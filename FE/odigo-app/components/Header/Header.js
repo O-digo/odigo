@@ -17,7 +17,7 @@ const Container = styled.View`
     width: 100%;
     justify-content: center;
     align-items: flex-end;
-    margin-top: 5px;
+    margin-top: 18px;
 `;
 
 const SettingButton = styled.TouchableOpacity`

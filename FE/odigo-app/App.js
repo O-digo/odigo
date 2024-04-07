@@ -12,7 +12,8 @@ import TrainSelect from './screens/TrainSelect.js';
 const Stack = createStackNavigator();
 
 const navTheme = {
-  ...DefaultTheme,
+  // ...DefaultTheme,
+  dark: true,
   colors: {
     // ...DefaultTheme.colors,
     background: 'black', // 헤더 배경색

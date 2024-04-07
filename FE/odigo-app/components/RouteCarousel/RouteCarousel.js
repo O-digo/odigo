@@ -135,7 +135,7 @@ const CarouselIndicator = styled.View`
     flex-direction: row;
     align-self: center;
     gap: 5px;
-    margin: 10px auto;
+    margin: 10px auto 0px;
 `;
 
 const Dot = styled.View`
