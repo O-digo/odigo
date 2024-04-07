@@ -5,15 +5,15 @@ import imgArrow from '../../assets/img/icon_arrow.png';
 
 export default function FavoriteStation({onPress}) {
     return (
-            <Container>
-                <Wrap>
-                    <FavoriteImage source={imgFavorite}></FavoriteImage>
-                    <FavoriteText>자주 가는 역</FavoriteText>
-                </Wrap>
-                <ArrowButton onPress={onPress}>
-                    <ArrowImage source={imgArrow}></ArrowImage>
-                </ArrowButton>
-            </Container>
+        <Container>
+            <Wrap>
+                <FavoriteImage source={imgFavorite}></FavoriteImage>
+                <FavoriteText>자주 가는 역</FavoriteText>
+            </Wrap>
+            <ArrowButton onPress={onPress}>
+                <ArrowImage source={imgArrow}></ArrowImage>
+            </ArrowButton>
+        </Container>
     )
 }
 

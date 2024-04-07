@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import { Alert } from 'react-native';
+import { Alert, View } from 'react-native';
 import styled from 'styled-components/native';
 import Header from '../components/Header/Header.js';
 import CurrentStation from '../components/Station/CurrentStation.js';
 import ArrivalStation from '../components/Station/ArrivalStation.js';
-import FavoriteStation from '../components/Station/FavoriteStation.js';
-import AddFavorite from '../components/Station/AddFavorite.js';
 import ControlButton from '../components/Control/ControlButton.js';
-import FavoriteList from '../components/SearchScreen/FavoriteList';
+import RouteCarousel from '../components/RouteCarousel/RouteCarousel.js';
+import FavoriteMain from '../components/Station/FavoriteMain.js';
+
 
 function Main({ navigation }) {
     const favoriteItems = [
@@ -19,6 +19,8 @@ function Main({ navigation }) {
     ];
     const [favorite, setFavorite] = useState([]);
     const [ControlMode, setControlMode] = useState('disable'); // 'start', 'quit'
+    const [selectedArrival, setSelectedArrival] = useState({station:'', line: []});
+    const [isRoute, setIsRoute] = useState(false);
     
     const onAlert = () => {
         Alert.alert("준비중입니다.");
@@ -33,6 +35,8 @@ function Main({ navigation }) {
         navigation.navigate('Search');
         setTimeout(() => {
             setControlMode('start');
+            setSelectedArrival({station: '영등포구청', line: ['line02','line05']});
+            setIsRoute(true);
         }, 500);
     }
     const goSetting = () => {
@@ -50,17 +54,16 @@ function Main({ navigation }) {
     <Container>
         <StationWrap>
             <Header onPress={goSetting}/>
-            <StationTitle>이번 역</StationTitle>
+            <Title>이번 역</Title>
             <CurrentStation onPress={goSearchCurrent} />
-            <StationTitle>도착 역</StationTitle>
-            <ArrivalStation onPress={goSearchArrival} />
-            <FavoriteStation onPress={goFavoriteEdit} />
-            {
-                // favoriteItems.length 
-                favorite.length
-                    ? <FavoriteList />
-                    // :<AddFavorite onPress={goFavoriteAdd} />
-                    :<AddFavorite onPress={goFavoriteAdd} />
+            <Title>도착 역</Title>
+            <ArrivalStation onPress={goSearchArrival} arrival={selectedArrival} />
+            { isRoute 
+                ? (<View>
+                        <Title>경로</Title>
+                        <RouteCarousel />
+                    </View>)
+                : <FavoriteMain onEdit={goFavoriteEdit} onAdd={goFavoriteAdd} favorite={favorite} />
             }
         </StationWrap>
         <ControlButton onPress={onAlert} mode={ControlMode} />
@@ -79,7 +82,7 @@ const Container = styled.View`
 
 const StationWrap = styled.View``;
 
-const StationTitle = styled.Text`
+const Title = styled.Text`
     color: white;
     font-size: 20px;
     font-weight: bold;
