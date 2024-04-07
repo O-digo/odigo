@@ -7,6 +7,7 @@ import Setting from './screens/Setting.js';
 import AlertSetting from './screens/AlertSetting.js';
 import FavoriteEdit from './screens/FavoriteEdit.js';
 import FavoriteAdd from './screens/FavoriteAdd.js';
+import TrainSelect from './screens/TrainSelect.js';
 
 const Stack = createStackNavigator();
 
@@ -21,25 +22,18 @@ const navTheme = {
 
 export default function App() {
   return (
-    <NavigationContainer theme={navTheme} >
-      <Stack.Navigator screenOptions={{headerTitleAlign:'center'}}>
-        <Stack.Screen 
+    <NavigationContainer theme={navTheme}>
+      <Stack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>
+        <Stack.Screen
           name="Main"
           component={Main}
-          options={{ 
+          options={{
             title: '홈',
-            headerShown: false }}
+            headerShown: false,
+          }}
         />
-        <Stack.Screen
-          name="Search"
-          component={Search}
-          options={{ title: '다음역' }}
-        />
-        <Stack.Screen
-          name="Setting"
-          component={Setting}
-          options={{ title: '설정' }}
-        />
+        <Stack.Screen name="Search" component={Search} options={{ title: '다음역' }} />
+        <Stack.Screen name="Setting" component={Setting} options={{ title: '설정' }} />
         <Stack.Screen
           name="AlertSetting"
           component={AlertSetting}
@@ -54,6 +48,11 @@ export default function App() {
           name="FavoriteAdd"
           component={FavoriteAdd}
           options={{ title: '자주 가는 역 추가하기' }}
+        />
+        <Stack.Screen
+          name="TrainSelect"
+          component={TrainSelect}
+          options={{ title: '도착역' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

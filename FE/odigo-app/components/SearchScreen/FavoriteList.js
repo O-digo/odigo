@@ -39,11 +39,11 @@ function FavoriteList() {
 
 const FavoriteListBox = styled.View`
   margin-top: 8px;
-  padding-left: 24px;
   display: flex;
   flex-direction: row;
   height: 40px;
   overflow-x: scroll;
+  padding-left: 24px;
 `;
 
 const ListScroll = styled.ScrollView``;
