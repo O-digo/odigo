@@ -3,10 +3,10 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://${DATASOURCE_URL}
+    url: jdbc:log4jdbc:mysql://${DATASOURCE_URL}
     username: ${DATASOURCE_USERNAME}
     password: ${DATASOURCE_PASSWORD}
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 
   # JPA 설정
   jpa:
@@ -18,6 +18,14 @@ spring:
         globally_quoted_identifiers: false
         format_sql: true     # 쿼리 로그 포맷 (정렬)
         show_sql: true       # 쿼리 로그 출력
+## mybatis config
+mybatis:
+  type-aliases-package: com.sprint.odigo
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    multiple-result-sets-enabled: true
+    call-setters-on-nulls: true
 
 logging:
   level:

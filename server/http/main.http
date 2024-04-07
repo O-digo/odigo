@@ -1,2 +1,2 @@
 
-GET {{API_URL}}/query/station
+GET {{API_URL}}/station/list
