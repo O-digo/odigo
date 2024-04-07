@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components/native';
 import TrainList from './TrainList';
 
-function Train() {
+function Train({ navigation }) {
   return (
     <TrainBox>
-      <TrainList />
+      <TrainList navigation={navigation} />
     </TrainBox>
   );
 }

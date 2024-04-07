@@ -1,0 +1,17 @@
+export const iconPath = {
+  line1: require('./assets/img/line_01.png'),
+  line2: require('./assets/img/line_02.png'),
+  line3: require('./assets/img/line_03.png'),
+  line4: require('./assets/img/line_04.png'),
+  line5: require('./assets/img/line_05.png'),
+  line6: require('./assets/img/line_06.png'),
+  line7: require('./assets/img/line_07.png'),
+  line8: require('./assets/img/line_08.png'),
+  line9: require('./assets/img/line_09.png'),
+  lineic1: require('./assets/img/line_ic1.png'),
+  lineic2: require('./assets/img/line_ic2.png'),
+  linekk: require('./assets/img/line_kk.png'),
+  linekj: require('./assets/img/line_kj.png'),
+  linearex: require('./assets/img/line_arex.png'),
+  linekc: require('./assets/img/line_kc.png'),
+};
