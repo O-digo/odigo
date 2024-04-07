@@ -1,6 +1,5 @@
 package com.sprint.odigo.ticket.domain.dto;
 
-import com.sprint.odigo.domain.dto.PerformanceType;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
