@@ -12,6 +12,7 @@ export default function ControlButton({onPress, mode}) {
 }
 
 const Container = styled.TouchableOpacity`
+    padding: 18px 14.5px;
     margin: 16px 20px;
     background-color: ${({mode}) => mode === 'disable' ? '#202027' : mode === 'start' ? '#3182F6' : '#F83242'};
     /* border: 2px solid rgb(49, 130, 246); */
@@ -23,6 +24,5 @@ const Container = styled.TouchableOpacity`
 const ControlButtonText = styled.Text`
     color: ${({mode})=> mode === 'disable' ? '#7E7E87' : '#FFFFFF' };
     font-size: 18px;
-    margin: 21.5px 14.5px;
     text-align: center;
 `;
