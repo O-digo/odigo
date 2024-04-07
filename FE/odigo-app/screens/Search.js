@@ -12,12 +12,12 @@ function Search({ navigation }) {
       <SeachBar onSearch={setSearchResults} />
       {searchResults ? (
         <>
-          <Favorite navigation={navigation} />
-          <Train navigation={navigation} />
+          <LineList line={'line1'} />
         </>
       ) : (
         <>
-          <LineList line={'line1'} />
+          <Favorite navigation={navigation} />
+          <Train navigation={navigation} />
         </>
       )}
     </StyledView>
