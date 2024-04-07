@@ -19,8 +19,8 @@ function TrainItem({ name, navigation, line }) {
 }
 
 const TrainItemBox = styled.View`
-  width: 109px;
-  height: 88px;
+  flex: 1;
+  aspect-ratio: 1; /* width와 height를 동일하게 유지하도록 설정 */
   margin-right: 9px;
   margin-bottom: 9px;
   border-radius: 8px;
@@ -28,7 +28,7 @@ const TrainItemBox = styled.View`
 `;
 
 const CustomButton = styled(TouchableOpacity)`
-  height: 100%;
+  flex: 1;
   justify-content: center;
   align-items: center;
 `;

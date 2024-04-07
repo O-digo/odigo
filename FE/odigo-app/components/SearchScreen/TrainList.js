@@ -1,4 +1,5 @@
 import React from 'react';
+import { FlatList } from 'react-native';
 import styled from 'styled-components/native';
 import TrainItem from './TrainItem';
 
@@ -27,30 +28,23 @@ function TrainList({ navigation }) {
     { id: 21, name: '경춘선', line: 'linekc' },
   ];
 
+  const renderItem = ({ item }) => (
+    <TrainItem name={item.name} line={item.line} navigation={navigation} />
+  );
+
   return (
-    <TrainScrollView>
-      <TrainItemsContainer>
-        {trainList.map((item) => (
-          <TrainItem
-            key={item.id}
-            name={item.name}
-            line={item.line}
-            navigation={navigation}
-          />
-        ))}
-      </TrainItemsContainer>
-    </TrainScrollView>
+    <TrainFlatList
+      data={trainList}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id.toString()}
+      numColumns={3}
+    />
   );
 }
 
-const TrainScrollView = styled.ScrollView`
-  flex: 1;
-`;
-
-const TrainItemsContainer = styled.View`
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+const TrainFlatList = styled.FlatList`
+  width: 100%;
+  height: 100%;
 `;
 
 export default TrainList;
