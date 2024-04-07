@@ -6,13 +6,10 @@ import Train from '../components/SearchScreen/Train';
 import LineList from '../components/SearchScreen/LineList';
 
 function Search({ navigation }) {
-  const [searchResults, setSearchResults] = useState(false);
-  const handelSearchResults = () => {
-    setSearchResults(!searchResults);
-  };
+  const [searchResults, setSearchResults] = useState([]);
   return (
     <StyledView>
-      <SeachBar onSearch={handelSearchResults} />
+      <SeachBar onSearch={setSearchResults} />
       {searchResults ? (
         <>
           <LineList line={'line1'} />
