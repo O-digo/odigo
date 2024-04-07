@@ -41,10 +41,6 @@ tasks.withType<Test> {
 }
 
 tasks.bootJar {
-    enabled = true
+    enabled = false
     layered
-}
-
-tasks.bootBuildImage {
-    imageName = "sprint/odigo"
 }
