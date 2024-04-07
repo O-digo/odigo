@@ -1,2 +1,2 @@
 
-GET http://localhost:8016/query/station
+GET {{API_URL}}/query/station
