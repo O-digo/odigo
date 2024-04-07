@@ -47,3 +47,7 @@ tasks.bootJar {
         manifest { attributes["Main-Class"] = "com.sprint.OdigoApplication" }
     }
 }
+
+tasks.jar {
+    enabled = false
+}
