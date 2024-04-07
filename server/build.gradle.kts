@@ -4,7 +4,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.4"
 }
 
-group = "com.wanted"
+group = "com.sprint"
 version = "0.0.1-SNAPSHOT"
 
 java {
@@ -46,5 +46,5 @@ tasks.bootJar {
 }
 
 tasks.bootBuildImage {
-    imageName = "wanted/preonboarding-backend"
+    imageName = "sprint/odigo"
 }
