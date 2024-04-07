@@ -44,7 +44,7 @@ tasks.bootJar {
     enabled = true
     layered
     manifest{
-        manifest { attributes["Main-Class"] = "com.sprint.OdigoApplication" }
+        manifest { attributes["Main-Class"] = "com.sprint.odigo.OdigoApplication" }
     }
 }
 
