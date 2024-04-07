@@ -7,12 +7,12 @@ function SeachBar({ onSearch }) {
   const [searchText, setSearchText] = useState('');
 
   const handleSearchTextChange = (text) => {
-    onSearch(text);
+    onSearch();
     setSearchText(text);
   };
 
   const handleClose = () => {
-    onSearch('');
+    onSearch();
     setSearchText('');
   };
 
