@@ -18,7 +18,7 @@ const Container = styled.TouchableOpacity`
     /* border: 2px solid rgb(49, 130, 246); */
     border-radius: 16px;
     position: fixed;
-    bottom: 0px;
+    bottom: 20px;
 `;
 
 const ControlButtonText = styled.Text`

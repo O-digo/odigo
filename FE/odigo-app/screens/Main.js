@@ -90,7 +90,7 @@ const Title = styled.Text`
     color: white;
     font-size: 20px;
     font-weight: bold;
-    padding: 12px 24px;
+    padding: 10px 24px;
 `;
 
 export default Main;

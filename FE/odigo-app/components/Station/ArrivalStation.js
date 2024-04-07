@@ -24,7 +24,7 @@ export default function ArrivalStation({onPress, arrival}) {
 
 const Container = styled.TouchableOpacity`
     height: 80px;
-    margin: 0 24px 24px 24px;
+    margin: 0 24px 12px;
     padding: 24px;
     font-size: 20px;
     background-color: rgb(44, 44, 54);

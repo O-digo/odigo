@@ -17,11 +17,11 @@ const Container = styled.View`
     width: 100%;
     justify-content: center;
     align-items: flex-end;
-    margin-top: 18px;
+    margin-top: 12px;
 `;
 
 const SettingButton = styled.TouchableOpacity`
-    padding: 16px 20px 16px 20px;
+    padding: 16px 20px;
 `;
 
 const SettingImage = styled.Image`
