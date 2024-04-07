@@ -26,7 +26,11 @@ function Main({ navigation }) {
         Alert.alert("준비중입니다.");
         if (ControlMode === 'disable') setControlMode('start');
         else if (ControlMode === 'start') setControlMode('quit');
-        else setControlMode('disable');
+        else {
+            setControlMode('disable');
+            setSelectedArrival([]);
+            setIsRoute(false);
+        }
     }
     const goSearchCurrent = () => {
         navigation.navigate('Search');
