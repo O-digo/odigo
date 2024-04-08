@@ -78,4 +78,7 @@ const StyledText = styled.Text`
 const FavoriteNotion = styled.Text`
   font-size: 16px;
   height: 19px;
+  color: rgb(255, 255, 255);
+  margin-top: 24px;
+  text-align: center;
 `;
