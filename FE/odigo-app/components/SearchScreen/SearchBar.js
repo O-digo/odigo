@@ -2,33 +2,23 @@ import React, { useState } from 'react';
 import styled from 'styled-components/native';
 import SearchIcon from '../../assets/img/icon_search.png';
 import SearchClose from '../../assets/img/icon_search_close.png';
+import SearchStore from '../../store/SearchStore';
 
-function SeachBar({ onSearch }) {
-  const [searchText, setSearchText] = useState('');
-
-  const handleSearchTextChange = (text) => {
-    onSearch(text);
-    setSearchText(text);
-  };
-
-  const handleClose = () => {
-    onSearch('');
-    setSearchText('');
-  };
-
+function SeachBar() {
+  const { searchKeyword, setSearchKeyword, clearSearchKeyword } = SearchStore();
   return (
     <SearchBox>
       <LeftBox>
         <SearchImg source={SearchIcon} />
         <SearchInput
-          value={searchText}
+          value={searchKeyword}
           placeholder="역 이름을 검색해주세요."
           placeholderTextColor="#828282"
-          onChangeText={handleSearchTextChange}
+          onChangeText={setSearchKeyword}
         />
       </LeftBox>
-      {searchText ? (
-        <SearchCloseButton onPress={handleClose}>
+      {searchKeyword ? (
+        <SearchCloseButton onPress={clearSearchKeyword}>
           <SearchCloseImg source={SearchClose} />
         </SearchCloseButton>
       ) : null}
