@@ -3,10 +3,10 @@ server:
 
 spring:
   datasource:
-    url: jdbc:log4jdbc:mysql://${DATASOURCE_URL}
+    url: jdbc:mysql://${DATASOURCE_URL}
     username: ${DATASOURCE_USERNAME}
     password: ${DATASOURCE_PASSWORD}
-    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   # JPA 설정
   jpa:
