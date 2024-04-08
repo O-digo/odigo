@@ -5,7 +5,20 @@ import SearchClose from '../../assets/img/icon_search_close.png';
 import SearchStore from '../../store/SearchStore';
 
 function SeachBar() {
-  const { searchKeyword, setSearchKeyword, clearSearchKeyword } = SearchStore();
+  const { searchKeyword, setSearchKeyword, clearSearchKeyword, setLineList } =
+    SearchStore();
+  const search = async () => {
+    try {
+      const response = await fetch(
+        `https://odigo-server-87daa8086d32.herokuapp.com/station/list?stationNm=${searchKeyword}`
+      );
+      const data = await response.json();
+      console.log(data);
+      setLineList(data.data);
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+    }
+  };
   return (
     <SearchBox>
       <LeftBox>
@@ -15,6 +28,7 @@ function SeachBar() {
           placeholder="역 이름을 검색해주세요."
           placeholderTextColor="#828282"
           onChangeText={setSearchKeyword}
+          onSubmitEditing={search}
         />
       </LeftBox>
       {searchKeyword ? (

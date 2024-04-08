@@ -1,22 +1,15 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import LineItem from './LineItem';
+import SearchStore from '../../store/SearchStore';
 
 function LineList({ line }) {
-  const lineList = [
-    { id: 1, name: '가능' },
-    { id: 2, name: '가산디지털단지' },
-    { id: 3, name: '간석' },
-    { id: 4, name: '개봉' },
-    { id: 5, name: '관악' },
-    { id: 6, name: '광명' },
-    { id: 7, name: '광명' },
-  ];
+  const { lineList } = SearchStore();
   return (
     <LineScrollView vertical={true} showsVerticalScrollIndicator={false}>
       <LineListBox>
         {lineList.map((item) => (
-          <LineItem key={item.id} name={item.name} line={line} />
+          <LineItem key={item.id} name={item.stationNm} line={item.lineNum} />
         ))}
       </LineListBox>
     </LineScrollView>

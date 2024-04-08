@@ -1,11 +1,33 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Alert } from 'react-native';
 import styled from 'styled-components/native';
 import { iconPath } from '../../iconPath';
+import SearchStore from '../../store/SearchStore';
 
 function TrainItem({ name, navigation, line }) {
-  const onPressButton = () => {
-    navigation.navigate('TrainSelect', { name, line });
+  const { setLineList } = SearchStore();
+  const onPressButton = async () => {
+    // 비동기 함수로 변경
+    try {
+      const response = await fetch(
+        `https://odigo-server-87daa8086d32.herokuapp.com/station/list?lineNum=${line}`
+      );
+      const data = await response.json();
+
+      // API 응답 확인
+      if (data.statusCode === 'OK') {
+        // 역 선택 화면으로 이동 및 데이터 전달
+        navigation.navigate('TrainSelect', { name, line, stationData: data.data });
+        setLineList(data.data);
+      } else {
+        // API 요청 실패 시 알림 표시
+        Alert.alert('Error', 'Failed to fetch station data');
+      }
+    } catch (error) {
+      console.error('Error fetching station data:', error);
+      // 네트워크 오류 등으로 인한 API 호출 실패 시 알림 표시
+      Alert.alert('Error', 'Failed to fetch station data');
+    }
   };
 
   return (
