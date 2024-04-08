@@ -1,2 +1,8 @@
 
-GET {{API_URL}}/query/station
+GET {{API_URL}}/station/list?lineNum=2
+###
+GET {{API_URL}}/subway/insert
+###
+GET {{API_URL}}/station/list?stationNm=강남
+###
+GET {{API_URL}}/station/list
