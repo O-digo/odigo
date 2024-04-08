@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sprint.odigo.infrastructure.mapper.StationMapper">
-    <select id="getStationListByLineNum" parameterType="String" resultType="List">
-        select * from station
-        where line_num = #{lineNum}
+    <select id="getStationListByLineNumOrStationNm" parameterType="String" resultType="StationResponse">
+        select station_nm,
+        line_num
+        from station
+        where 1 = 1
+        <if test="lineNum != null">
+            and line_num like concat('%', #{lineNum}, '%')
+        </if>
+        <if test="stationNm != null">
+            and station_nm like concat('%', #{stationNm}, '%')
+        </if>
+        order by line_num, station_nm
     </select>
+    <select id="getStationListByStationName" parameterType="String" resultType="StationResponse">
+        select station_nm,
+               line_num
+        from station
+        where 1 = 1
+          and station_nm like concat('%', #{stationNm}, '%')
+    </select>
+    <insert id="insertStation" parameterType="java.util.List">
+        INSERT INTO station (station_cd, station_nm, line_num, fr_code)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.STATION_CD}, #{item.STATION_NM}, #{item.LINE_NUM}, #{item.FR_CODE})
+        </foreach>
+        on duplicate key update
+        station_nm = values(station_nm),
+        line_num = values(line_num),
+        fr_code = values(fr_code)
+    </insert>
+
 </mapper>
