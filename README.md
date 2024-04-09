@@ -1,8 +1,11 @@
-# [3조 어디고] 어디고_테오의 스프린트 17기
+# [3조] 어디고_테오의 스프린트 17기
 
 <div align="middle">
   <img src="https://github.com/O-digo/odigo/assets/11751089/59423d7b-8436-4e4d-a29c-454b1a671631">
 </div>
+
+<br >
+<br >
 
 # 💼 서비스 소개
 ```jsx
@@ -16,6 +19,20 @@
 <div align="middle">
   <img src="https://github.com/O-digo/odigo/assets/11751089/89ad244e-ea4b-49c1-a8d8-bb2cedb846b2">
 </div>
+
+### 실행 명령어
+```bash
+npm install    // 설치 
+npm run start  // npx expo start
+               // QR코드가 생성되면 Expo Go App으로 실행
+```
+### 빌드 명령어 (Android 지원)
+```bash
+npm install -g eas-cli // eas-cli 설치
+eas login
+eas build:configure
+eas build -p android --profile preview // Adroid용 apk 파일 생성
+```
 
 <br >
 <br >
