@@ -33,6 +33,8 @@ eas login
 eas build:configure
 eas build -p android --profile preview // Adroid용 apk 파일 생성
 ```
+### 빌드 파일
+- [안드로이드용 APK 파일 다운로드](https://expo.dev/artifacts/eas/eXucZsfZEMSciH6YvfYQqN.apk)
 
 <br >
 <br >
